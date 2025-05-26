@@ -1,1 +1,26 @@
-These are the individual modules that make up the project.
+Architecture
+The system's main components include:
+1. Debounced user input
+2. Phase accumulator
+3. ROM-based waveform Look-Up Tables (LUTs)
+4. Amplitude scaling
+5. PWM output stage
+6. 7-Segment LED displays
+
+File Contents
+The directory contains the following key Verilog files:
+1. debounce.v: Debounces button inputs for reliable detection.
+2. input_controller.v: Manages user input from buttons and switches to configure frequency, amplitude, reset, and waveform type.
+3. phase_accumulator.v: Generates the phase angle for waveform synthesis, crucial for controlling output frequency.
+4. pwm_generator.v: Converts digital amplitude values to a PWM signal, acting as a digital-to-analog interface.
+5. sawtooth_lookup.v, sine_lookup.v, squares_lookup.v, triangles_lookup.v: ROM-based LUTs storing pre-calculated values for each waveform type.
+6. segmentOut.v: Controls the 7-segment LED displays to show waveform parameters.
+7. wave_generator.v: Orchestrates the DDS core, selecting waveforms, applying amplitude scaling, and preparing data for PWM output.
+
+Functional Overview
+The system operates as follows:
+1. User Input: The input_controller (using debounce) reads user inputs for frequency, amplitude, and waveform selection.
+2. Waveform Generation: The phase_accumulator generates a phase angle based on the user-defined frequency. This phase angle addresses one of the waveform LUTs (sine_lookup, squares_lookup, etc.) to retrieve the corresponding waveform sample.
+3. Amplitude Scaling: The wave_generator scales the selected waveform sample by the user-defined amplitude.
+4. PWM Output: The scaled waveform sample is then fed to the pwm_generator, which converts it into a Pulse Width Modulated signal. This PWM signal, with a frequency of approximately 390.625 kHz, can be low-pass filtered to reconstruct the analog waveform.
+5. Display Readout: The segmentOut module drives an 8-digit 7-segment LED display, showing the current waveform type, frequency, and amplitude. This display is multiplexed to ensure all digits are refreshed without flicker.
