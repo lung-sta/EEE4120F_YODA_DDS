@@ -28,6 +28,6 @@ It generates periodic waveforms (Sine, Square, Triangle, Sawtooth) in real-time 
 
 ## Author
 
-Developed as part of [EEE4120F: High Performance Embedded Systems]  
-University of Cape Town – [Wave Makers]
+Developed as part of EEE4120F: High Performance Embedded Systems 
+University of Cape Town – Wave Makers
 
