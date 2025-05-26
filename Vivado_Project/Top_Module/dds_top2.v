@@ -25,10 +25,6 @@ module dds_top2(
     input wire reset,
     input wire [3:0] sw,            //switch input for waveform selection
     input wire btnU_raw, btnD_raw, btnL_raw, btnR_raw, btnC_raw,    //Raw pushbutton inputs
-    //input wire [15:0] frequency,   // Input desired frequency
-    //input wire [11:0] amplitude,   // 12-bit amplitude control
-    //input wire [1:0] wave_type,    // 00=sine, 01=square, 10=triangle, 11=sawtooth
-    //output reg [15:0] wave_out,     // Output waveform
     output wire pwm_out,            // Final PWM output signal
     output wire [7:0] seg,
     output wire [7:0] anode
@@ -115,8 +111,6 @@ end
 // Assign the registered value to wave_out wire
 assign wave_out = wave_out_reg;
 
-// CODE TO COCNSOLIDATE THE PHASE ACCUMULATOR TASK TO THE PWM OUPUT
-
 pwm_generator u_pwm (
     .clk(clock),
     .rst(reset),
@@ -124,6 +118,7 @@ pwm_generator u_pwm (
     .pwm_out(pwm_out)
 );
 
+//Instantiate the segmentOut module
 segmentOut u_seg (
     .clk(clock),
     .freq(freq_word),
