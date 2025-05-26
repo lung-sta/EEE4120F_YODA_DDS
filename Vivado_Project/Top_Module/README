@@ -1,0 +1,7 @@
+
+This directory contains the top-level Verilog modules for a Direct Digital Synthesis (DDS) system and its corresponding testbench for simulation.
+
+Folder Contents
+The directory contains the following Verilog files:
+1. dds_top2.v: This is the top-level module of the Direct Digital Synthesis (DDS) system. It instantiates and connects all the sub-modules described previously (e.g., input controller, phase accumulator, waveform LUTs, PWM generator, 7-segment display) to form the complete functional DDS system. This file acts as the main entry point for the FPGA synthesis.
+2. dds_top_tb.v: This is the testbench module for the dds_top2.v system. It is used for simulating the entire DDS system's functionality. The testbench provides stimulus to the inputs of dds_top2.v (e.g., simulating button presses, switch toggles) and monitors the outputs to verify the system's correctness and behavior in a simulated environment. It does not get synthesized onto the FPGA but is essential for design verification.
