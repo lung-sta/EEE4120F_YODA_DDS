@@ -28,7 +28,7 @@ Holds **top-level Verilog files** that integrate all components into a working s
 - Connects waveform generators with I/O (switches, LEDs, 7-segment display)
 - Manages high-level control logic and signal routing
 - Provides a complete design ready for synthesis and FPGA programming
-- Include the **top-level testbench** for simulation
+- Includes the **top-level testbench** for simulation
 Each top-level module represents a complete functional version of the DDS system.
 
 ---
